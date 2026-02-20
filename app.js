@@ -21,3 +21,12 @@ app.get("/movies", (req, res) => {
     res.json(results);
   });
 });
+
+app.get("/movies/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const sql = "SELECT * FROM movies WHERE id = ?";
+  connection.query(sql, [id], (err, results) => {
+    if (err) return res.status(500).json({ error: "Database query failed" });
+    res.json(results[0]);
+  });
+});
