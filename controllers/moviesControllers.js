@@ -9,5 +9,14 @@ function index(req, res) {
   });
 }
 
+function show(req, res) {
+  const id = parseInt(req.params.id);
+  const sql = "SELECT * FROM movies WHERE id = ?";
+  connection.query(sql, [id], (err, results) => {
+    if (err) return res.status(500).json({ error: "Database query failed" });
+    res.json(results[0]);
+  });
+}
+
 //esporto
-module.exports = { index };
+module.exports = { index, show };

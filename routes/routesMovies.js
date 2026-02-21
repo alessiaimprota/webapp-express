@@ -6,5 +6,8 @@ const moviesController = require("../controllers/moviesControllers");
 //ROTTA INDEX chiamo il path "/" perché generico e poi richiamo la la funzione allegata in controller
 router.get("/", moviesController.index);
 
+//Rotta showww!!! mi sto a diverti a rifarlo tutto questo
+router.get("/:id", moviesController.show);
+
 //esportooo
 module.exports = router;
