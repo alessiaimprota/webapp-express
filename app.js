@@ -1,27 +1,25 @@
+//Importo le varie convenzioni di express che mi servono per lavorare
 const express = require("express");
 const app = express();
 const port = 3000;
 
-//IMPORTO un attimo qui per provare la rotta di index
-const connection = require("./data/db");
+//importo i routes
+const moviesRoutes = require("./routes/routesMovies");
 
+//Gestisco da qua le routes dei movies così posso gestire le rotte dal file routes
+app.use("/movies", moviesRoutes);
+
+//Rotta di home
 app.get("/", (req, res) => {
   res.send("ciaone");
 });
 
+//Controllo dell'avvio del server
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-app.get("/movies", (req, res) => {
-  const sql = "SELECT * FROM movies";
-  //proviamo qua prima se funziona la rotta index
-  connection.query(sql, (err, results) => {
-    if (err) return res.status(500).json({ error: "Database query failed" });
-    res.json(results);
-  });
-});
-
+/*
 app.get("/movies/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const sql = "SELECT * FROM movies WHERE id = ?";
@@ -30,3 +28,4 @@ app.get("/movies/:id", (req, res) => {
     res.json(results[0]);
   });
 });
+*/
