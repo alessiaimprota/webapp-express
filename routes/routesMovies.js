@@ -9,5 +9,7 @@ router.get("/", moviesController.index);
 //Rotta showww!!! mi sto a diverti a rifarlo tutto questo
 router.get("/:id", moviesController.show);
 
+router.post("/", moviesController.store);
+
 //esportooo
 module.exports = router;

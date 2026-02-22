@@ -5,8 +5,7 @@ const port = 3000;
 
 //importo i routes
 const moviesRoutes = require("./routes/routesMovies");
-
-app.use(express.static("public"));
+app.use(express.json());
 //Gestisco da qua le routes dei movies così posso gestire le rotte dal file routes
 app.use("/movies", moviesRoutes);
 
