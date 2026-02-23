@@ -90,5 +90,16 @@ function store(req, res) {
   );
 }
 
+function destroy(req, res) {
+  //GESTIONE PRIMA ALLA CHIAMATA DEL FILM UGUALE A SHOW
+
+  const id = parseInt(req.params.id);
+  const moviesSql = "DELETE FROM movies WHERE id = ?";
+
+  connection.query(moviesSql, [id], (err, results) => {
+    if (err) return res.status(500).json({ error: "Database query failed" });
+    res.send(204);
+  });
+}
 //esporto
-module.exports = { index, show, store };
+module.exports = { index, show, store, destroy };
