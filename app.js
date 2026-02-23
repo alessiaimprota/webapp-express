@@ -9,6 +9,7 @@ const errorsHandler = require("./middlewares/errorsHandler");
 //importo i routes
 const moviesRoutes = require("./routes/routesMovies");
 app.use(express.json());
+app.use(express.static("public"));
 //Gestisco da qua le routes dei movies così posso gestire le rotte dal file routes
 app.use("/movies", moviesRoutes);
 
