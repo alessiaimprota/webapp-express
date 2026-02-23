@@ -2,7 +2,8 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-
+const notFound = require("./middlewares/notFound");
+const errorsHandler = require("./middlewares/errorsHandler");
 //importo i routes
 const moviesRoutes = require("./routes/routesMovies");
 app.use(express.json());
@@ -19,6 +20,8 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
+app.use(errorsHandler);
+app.use(notFound);
 /*
 app.get("/movies/:id", (req, res) => {
   const id = parseInt(req.params.id);
