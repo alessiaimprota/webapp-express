@@ -1,7 +1,9 @@
 //Importo le varie convenzioni di express che mi servono per lavorare
 const express = require("express");
 const app = express();
-const port = 3000;
+require("dotenv").config();
+
+const port = process.env.PORT;
 const notFound = require("./middlewares/notFound");
 const errorsHandler = require("./middlewares/errorsHandler");
 //importo i routes
